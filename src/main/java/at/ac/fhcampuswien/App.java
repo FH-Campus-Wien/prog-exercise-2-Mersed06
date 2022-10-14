@@ -18,7 +18,6 @@ public class App {
 
         DecimalFormat f1 = new DecimalFormat("0.00");
 
-
         if (number <= 0) {
             System.out.println("No number entered.");
             return;
@@ -44,7 +43,7 @@ public class App {
         }
         for (int i = 1; i <= number; i++) //outer loop
         {
-            for (int j = 1; j <= i; j++) { //inner loop for drawing the stairs
+            for (int j = 1; j <= i; j++) {          //inner loop for drawing the stairs
                 count++;
                 System.out.print(count + " ");
             }
@@ -70,18 +69,38 @@ public class App {
     }
 
     //todo Task 4
-    public void printRhombus(){
-//Didn't understand the excercise completely
+    public void printRhombus() {
 
-        char a;
-        int height;
-
+        Scanner scanner = new Scanner(System.in);
         System.out.print("h: ");
-        height = scanner.nextInt();
+        int h = scanner.nextInt();
         System.out.print("c: ");
-        a = scanner.next().charAt(0);
-        if (height % 2 == 0)
-        {
+        char c = scanner.next().charAt(0);
+
+        if (h % 2 == 1) {
+            //Print obere Hälfte
+            for (int row = 0; row <= h / 2; row++) {
+                for (int row2 = row; row2 < h/2; row2++) {
+                    System.out.print(" ");
+                }
+                for (int diff = 0 - row; diff <= row ; diff++) {
+                    // c ist character
+                    System.out.print((char) (c - Math.abs(diff)));//Math.abs() liefert einen integer zurück
+                }
+                System.out.println();
+            }
+            //Print die untere Hälfte
+            for (int row = h / 2; row > 0; row--) {
+                for (int row2 = row; row2 <= h / 2; row2++) {
+                    System.out.print(" ");
+                }
+                for (int diff = 0 - row + 1; diff < row; diff++) {
+                    System.out.print((char) (c - Math.abs(diff)));
+                }
+                System.out.println();
+            }
+        }
+        else{
             System.out.println("Invalid number!");
         }
     }
